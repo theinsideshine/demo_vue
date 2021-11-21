@@ -37,7 +37,7 @@
              </ul>
              
              <button v-if="userLogged" style="margin-left: 10px" v-on:click="logout">Salir</button>
-             <h6 v-if="userLogged">Usuario  logueado: {{userLogged}}</h6> 
+             <h6 v-if="userLogged"> {{userLogged}}</h6> 
          </div>
     </nav>    
 
