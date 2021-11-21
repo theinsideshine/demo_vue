@@ -56,6 +56,9 @@ Acceso a end point
 Listar y borrar usuarios
 ![](images/user1.gif)
 
+Editar usuarios
+![](images/update_user.gif)
+
 
 
 
