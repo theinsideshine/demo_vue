@@ -36,4 +36,23 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
+
+La intencion de esta app es poder probar un back end escrito en java con toker jwt y Argon2
+para un crud y un acceso a und end point del clima.
+
+Alta de usuario
 ![](images/alta.gif)
+
+Login
+![](images/login.gif)
+
+Listado de usuarios
+![](images/get_users.gif)
+
+Acceso a end point
+![](images/get_endpoint.gif)
+
+
+
+
+
