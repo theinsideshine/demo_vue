@@ -2,7 +2,20 @@
 
 ## Project setup
 ```
-npm install
+npm install -g @vue/cli
+Vue --version 
+
+npm install --save vue-router 
+
+npm install --save axios
+
+
+npm install --save vuelidate
+
+
+npm i @smartweb/vue-flash-message
+
+
 ```
 
 ### Compiles and hot-reloads for development
