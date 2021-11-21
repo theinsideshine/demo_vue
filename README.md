@@ -53,6 +53,9 @@ Acceso a end point
 ![](images/endpoint.gif)
 
 
+Listar y borrar usuarios
+![](images/user1.gif)
+
 
 
 

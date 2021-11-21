@@ -13,6 +13,7 @@
                 </p>
                 <div v-if="submited && !$v.contact.email.required">El campo correo es obligatorio</div>
                 <div v-if="submited && !$v.contact.email.minLength">El campo correo debe tener al menos 3 caracteres</div>
+                <div v-if="submited && !$v.contact.email.email">El campo debe tener formato de correo</div>
               </div>
 
         <div class="col-md-4">

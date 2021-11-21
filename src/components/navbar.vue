@@ -36,10 +36,12 @@
 
              </ul>
              
-             <button v-if="userLogged" style="margin-left: 10px" v-on:click="logout">Salir</button>
-             <h6 v-if="userLogged"> {{userLogged}}</h6> 
          </div>
-    </nav>    
+         <div class="navbar-right">
+              <h6 v-if="userLogged"> Hola {{userLogged}} </h6> 
+             <button v-if="userLogged"  v-on:click="logout">Salir</button>
+         </div>  
+             </nav>    
 
     
   </div>
