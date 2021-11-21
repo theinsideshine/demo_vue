@@ -50,7 +50,7 @@ Listado de usuarios
 ![](images/get_users.gif)
 
 Acceso a end point
-![](images/get_endpoint.gif)
+![](images/endpoint.gif)
 
 
 
