@@ -13,19 +13,44 @@
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Telefono</th>
-          <th>Mensaje</th>
+          <th>Mensaje</th>          
 
         </tr>
       </thead>
       <tbody>
-        <tr v-for="persona in users" :key="persona.id">
-            <td>{{persona.id}}</td>
-            <td>{{persona.email}}</td>                    
-            <th>{{persona.name}}</th>
-            <th>{{persona.surname}}</th>
-            <th>{{persona.phone}}</th>
-            <th>{{persona.msj}}</th>
-             <button v-on:click="deleteId(persona.id)">Borrar</button>
+        <tr v-for="user in users" :key="user.id">
+            <th>{{user.id}}</th>
+            <th>{{user.email}}</th>                    
+            <th v-if="tagEditingId == user.id">
+              <input type="text" v-model="user.name"> 
+            </th>
+            <th v-else @click="setToEditing(user)">
+              {{user.name}} 
+            </th>
+             <th v-if="tagEditingId == user.id">
+              <input type="text" v-model="user.surname"> 
+            </th>
+            <th v-else @click="setToEditing(user)">
+              {{user.surname}} 
+            </th>
+            <th v-if="tagEditingId == user.id">
+              <input type="text" v-model="user.phone"> 
+            </th>
+            <th v-else @click="setToEditing(user)">
+              {{user.phone}} 
+            </th>
+
+             <th v-if="tagEditingId == user.id">
+              <input type="text" v-model="user.msj"> 
+            </th>
+            <th v-else @click="setToEditing(user)">
+              {{user.msj}} 
+            </th>
+            
+             <button  v-on:click="deleteUser(user.id)">Borrar</button>
+             <button  v-on:click="setToEditing(user)">Editar</button>
+             <button  v-on:click="updateUser(user)">Guardar</button>
+            
         </tr>
       </tbody>
       
@@ -50,6 +75,7 @@ export default {
  
   data() {
     return {
+      tagEditingId: '0',
       users: {
         id: '',
         email: '',
@@ -57,8 +83,8 @@ export default {
         name: '',
         surname: '',
         phone: '',
-        msj: ''
-
+        msj: '',
+        creationDate: ''
       }
                
     }
@@ -85,18 +111,20 @@ export default {
             };
             console.log(config);
             axios
-            .get(Global.url_users,config)
+            .get(Global.url_users_list,config)
             .then((response)=>{
-                console.log(response.data);
-                this.users=response.data;
+               console.log(response);
+               this.users =response.data;
+              
+                
                 
             })
             .catch((error)=> {
               this.flashMessage.show({status: 'error', tittle: MyApp, message: 'Error:'+error});
-               // document.form.reset();
+               
             });
         },
-        deleteId(id){
+        deleteUser(id){
 
           let config = {
                headers: {
@@ -110,7 +138,7 @@ export default {
               if(response.status==200){
               console.log(response.data);
 
-                this.flashMessage.show({status: 'success', tittle: MyApp, message: 'El id '+ id +' se dio de borro'});
+                this.flashMessage.show({status: 'success', tittle: MyApp, message: 'El id:'+ id +' se  borro'});
               this.getAllUsers();        
               }
 
@@ -119,7 +147,35 @@ export default {
               this.flashMessage.show({status: 'error', tittle: MyApp, message: 'Los datos ingresados son son validos. Error:'+error});
                 document.form.reset();
             });
-        }        
+        },
+        updateUser(tag){
+
+          let config1 = {
+               headers: {
+                  Authorization: this.userToken
+              }
+          };
+          console.log('el users es: '+ tag);
+           axios
+          .put(Global.url_users_update,tag,config1)
+          .then( (response)=>{
+              if(response.status==200){
+              console.log(response.data);
+
+              this.flashMessage.show({status: 'success', tittle: MyApp, message: 'El usuario:'+ tag.name +' se guardo'});
+               this.tagEditingId = '0'; // Desactiva la edicon de inline        
+              }
+
+            })
+            .catch((error)=> {
+              this.flashMessage.show({status: 'error', tittle: MyApp, message: 'Los datos ingresados son son validos. Error:'+error});
+               // document.form.reset();
+            });
+        },
+        setToEditing(tag){
+          this.tagEditingId = tag.id;
+         
+        }     
     },
     computed: {
       userLogged() {

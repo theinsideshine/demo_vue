@@ -1,8 +1,9 @@
 export var Global = {
-    url_register: 'http://localhost:8080/api/register',
+    url_register: 'http://localhost:8080/api/users/register',
     url_login: 'http://localhost:8080/api/login',
-    url_users: 'http://localhost:8080/api/users',
-    url_users_delete: 'http://localhost:8080/api/users/delete/'
+    url_users_list: 'http://localhost:8080/api/users/list',
+    url_users_delete: 'http://localhost:8080/api/users/delete/',
+    url_users_update: 'http://localhost:8080/api/users/update/'
 
 }
 /*
