@@ -1,0 +1,229 @@
+ <!--head-->
+      <div class="container-fluid">
+        
+          <ul > 
+
+            <li class="nav-item active text-center">
+              <router-link to="/home"  title="home">Home   </router-link>
+            </li>
+            <li class="nav-item text-center">
+              <router-link to="/contact"  title="contact">contact </router-link>
+            </li>
+            <li  class="nav-item text-center">
+              <router-link to="/login"  title="login">login  </router-link>
+            </li>
+          </ul>
+        
+      </div><!--head-->     
+      
+      https://github.com/peligro/taller_practico_vue_js/blob/master/taller_practico/src/components/ContactoComponent.vue
+
+      <form name="form" id="form" v-on:submit.prevent="process();">       
+       
+        <div class="col-md-4">
+           <p>
+             Nombre: <input type="text" name="nombre" placeholder="Nombre" class="form-control" v-model="contact.name"/>
+           </p>
+           <div v-if="submited && !$v.contact.name.required">El campo nombre es obligatorio</div>
+         </div>
+ 
+         <div class="col-md-4">
+           <p>
+             Email: <input type="text" name="email" placeholder="Email" class="form-control"  v-model="contact.email"/>
+           </p>
+         </div>
+ 
+         <div class="col-md-4">
+           <p>
+             Telefono: <input type="text" name="telefono" placeholder="Telefono" class="form-control"  v-model="contact.phone" />
+           </p>
+         </div>
+         
+         <div class="col-md-4">
+           <p>
+             Mensaje: <textarea name="mensaje" id="mensaje" cols="30" rows="5" placeholder="Mensaje" class="form-control"  v-model="contact.msj" >
+                       </textarea>
+           </p>
+         </div>
+ 
+         
+         <div class="col-md-4">
+           <hr/>
+           <input type="submit" value="Enviar" title="Enviar" class="btn btn-primary">
+         </div>
+ 
+       </form>
+       
+ 
+     </div>
+     
+ </template>
+ 
+ 
+ <script>
+ import {
+         required,
+         minLength,
+         
+     } from 'vuelidate/lib/validators'
+ export default {
+   
+   name: 'contact',
+   data(){
+     return {
+       submited: false,
+       contact:{
+         name: '',
+         email: '',
+         phone: '',
+         msj: ''
+       }
+     }
+   },
+   methods: {
+     process(){
+ 
+       
+       this.submited = true;
+       if (this.$v.$invalid){
+         return false;
+       }
+       alert(this.contact.name);
+     },
+     validations: {
+       contact:{
+         name: {
+           required,
+           minLength: minLength(2)
+          }
+          
+       }
+     }
+   }
+ }
+ 
+ </script>
+ 
+ <style>
+ 
+ @import '../assets/css/bootstrap.css';
+ </style>
+ 
+ 
+ 29046abedc6759780d339d28d50c93a2
+
+ api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+
+ copia de login funcionando 
+
+ <template>
+  <div >
+      <h2>Formulario de logueo </h2>    
+      <form name="form" id="form" v-on:submit.prevent="process();">
+        <!-- Email input -->
+        <div class="col-md-4">
+                <p>
+                  Email: <input type="text" name="email" placeholder="Email" class="form-control"  v-model="contact.email"/>
+                </p>
+                <div v-if="submited && !$v.contact.email.required">El campo correo es obligatorio</div>
+                <div v-if="submited && !$v.contact.email.minLength">El campo correo debe tener al menos 3 caracteres</div>
+              </div>
+
+        <div class="col-md-4">
+                  <p>
+                    Contraseña: <input type="password" name="contraseña" placeholder="Contraseña" class="form-control"  v-model="contact.password"/>
+                  </p>
+                  <div v-if="submited && !$v.contact.password.required">El campo contraseña es obligatorio</div>
+                  <div v-if="submited && !$v.contact.password.minLength">El campo contraseña debe tener al menos 6 caracteres</div>
+                </div>
+          
+        <div class="col-md-4">
+          <hr/>
+          <input type="submit" value="Enviar" title="Enviar" class="btn btn-primary">
+        </div>  
+      </form>
+      <FlashMessage></FlashMessage>
+  </div>
+</template>
+
+<script>
+import {Global,  MyApp} from '../Global';
+import axios from 'axios';
+import auth from "./auth";
+import {
+        required,
+        minLength,        
+        email
+        
+    } from 'vuelidate/lib/validators'
+export default {
+  name: 'login',
+ data(){
+    return {
+      submited: false,
+      contact:{
+        email: '',
+        password: ''
+        
+      }
+    }
+  },
+  methods: {
+    process(){
+      this.submited = true;
+      this.$v.$touch();
+      if (this.$v.$invalid){
+        console.log("nones")
+        return false;
+      }
+      let config = {
+          headers: {
+            "Content-Type": "application/json",
+          },
+      };
+      axios
+      .post(Global.url_login,this.contact,config)
+      .then( (response)=>{
+        if(response.status==200){
+        console.log(response.data);
+        
+
+          this.flashMessage.show({status: 'success', tittle: MyApp, message: 'El usuario '+ this.contact.email+' se logueado exitosamente.'});
+          localStorage.setItem('token',response.data.token);
+          localStorage.setItem('name',response.data.name);
+          localStorage.setItem('loginStatus',true);
+         this.$router.push('/weather');
+        }
+
+      })
+      .catch((error)=> {
+         this.flashMessage.show({status: 'error', tittle: MyApp, message: 'Los datos ingresados son son validos. Error:'+error});
+          document.form.reset();
+      });
+      
+    }
+  },
+  validations: {
+      contact:{
+        
+         email: {
+          required,
+          minLength: minLength(3),
+          email
+         },
+         password: {
+          required,
+          minLength: minLength(6)
+          
+         }
+         
+      }
+    }
+ 
+}
+</script>
+
+<style>
+
+@import '../assets/css/bootstrap.css';
+</style>
