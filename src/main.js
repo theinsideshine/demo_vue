@@ -4,6 +4,15 @@ import VueRouter from 'vue-router';
 import Vuelidate from 'vuelidate';
 import FlashMessage from '@smartweb/vue-flash-message';
 
+import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
+// Importar los archivos CSS de Bootstrap y BootstrapVue (el orden es importante)
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
+// Haz que BootstrapVue esté disponible en todo tu proyecto
+Vue.use(BootstrapVue);
+// Opcionalmente, instale el plugin de componentes de iconos BootstrapVue
+Vue.use(IconsPlugin);
+
 import HomeComponent from './components/home.vue';
 import RegisterComponent from './components/register.vue';
 import LoginComponent from './components/login.vue';

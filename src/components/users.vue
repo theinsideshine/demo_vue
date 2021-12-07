@@ -5,7 +5,7 @@
       <router-view></router-view>
       </div>
     <h2> Pagina de usuarios </h2>     
-    <table class="table table-bordered">
+    <table class="table table-bordered ">
       <thead>
         <tr>
           <th>ID</th>          
@@ -19,38 +19,38 @@
       </thead>
       <tbody>
         <tr v-for="user in users" :key="user.id">
-            <th>{{user.id}}</th>
-            <th>{{user.email}}</th>                    
-            <th v-if="tagEditingId == user.id">
+            <td>{{user.id}}</td>
+            <td>{{user.email}}</td>                    
+            <td v-if="tagEditingId == user.id">
               <input type="text" v-model="user.name"> 
-            </th>
-            <th v-else @click="setToEditing(user)">
+            </td>
+            <td v-else @click="setToEditing(user)">
               {{user.name}} 
-            </th>
-             <th v-if="tagEditingId == user.id">
+            </td>
+             <td v-if="tagEditingId == user.id">
               <input type="text" v-model="user.surname"> 
-            </th>
-            <th v-else @click="setToEditing(user)">
+            </td>
+            <td v-else @click="setToEditing(user)">
               {{user.surname}} 
-            </th>
-            <th v-if="tagEditingId == user.id">
+            </td>
+            <td v-if="tagEditingId == user.id">
               <input type="text" v-model="user.phone"> 
-            </th>
-            <th v-else @click="setToEditing(user)">
+            </td>
+            <td v-else @click="setToEditing(user)">
               {{user.phone}} 
-            </th>
+            </td>
 
-             <th v-if="tagEditingId == user.id">
+             <td v-if="tagEditingId == user.id">
               <input type="text" v-model="user.msj"> 
-            </th>
-            <th v-else @click="setToEditing(user)">
+            </td>
+            <td v-else @click="setToEditing(user)">
               {{user.msj}} 
-            </th>
-            
-             <button  v-on:click="deleteUser(user.id)">Borrar</button>
-             <button  v-on:click="setToEditing(user)">Editar</button>
-             <button  v-on:click="updateUser(user)">Guardar</button>
-            
+            </td>
+             <b-button-group>
+              <b-button  variant="outline-secondary" v-on:click="deleteUser(user.id)">Borrar</b-button>
+              <b-button  variant="outline-secondary" v-on:click="setToEditing(user)">Editar</b-button>
+              <b-button  variant="outline-secondary" v-on:click="updateUser(user)">Guardar</b-button>
+             </b-button-group>
         </tr>
       </tbody>
       
@@ -190,7 +190,3 @@ export default {
 
   </script>
 
-<style>
-
-@import '../assets/css/bootstrap.css';
-</style>

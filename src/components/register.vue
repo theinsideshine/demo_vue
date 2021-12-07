@@ -4,66 +4,90 @@
       <div>
       <router-view></router-view>
       </div>
-        <h2>Pagina de registro</h2>
+
+      <body class="text-center">
+        
+      
+        <h2>Por favor ingrese sus datos</h2>
 
        
 
-      <form name="form" id="form" v-on:submit.prevent="process();">       
-       
-       <div class="col-md-4">
-          <p>
-            Nombre: <input type="text" name="nombre" placeholder="Nombre" class="form-control" v-model="contact.name"/>
-          </p>
-          <div v-if="submited && !$v.contact.name.required">El campo nombre es obligatorio</div>
-           <div v-if="submited && !$v.contact.name.minLength">El campo nombre debe tener al menos 3 caracteres</div>
+        <form   name="form" id="form" v-on:submit.prevent="process();">       
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+              <p>
+                Nombre: <input type="text" name="nombre" placeholder="Nombre" class="form-control" v-model="contact.name"/>
+              </p>
+              <div v-if="submited && !$v.contact.name.required">El campo nombre es obligatorio</div>
+              <div v-if="submited && !$v.contact.name.minLength">El campo nombre debe tener al menos 3 caracteres</div>
+          </div>
+        </div> 
+
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <p>
+              Apellido: <input type="text" name="apellido" placeholder="Apellido" class="form-control" v-model="contact.surname"/>
+            </p>
+            <div v-if="submited && !$v.contact.surname.required">El campo apellido es obligatorio</div>
+            <div v-if="submited && !$v.contact.surname.minLength">El campo apellido debe tener al menos 3 caracteres</div>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <p>
-            Apellido: <input type="text" name="apellido" placeholder="Apellido" class="form-control" v-model="contact.surname"/>
-          </p>
-          <div v-if="submited && !$v.contact.surname.required">El campo apellido es obligatorio</div>
-           <div v-if="submited && !$v.contact.surname.minLength">El campo apellido debe tener al menos 3 caracteres</div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <p>
+              Email: <input type="text" name="email" placeholder="Correo" class="form-control"  v-model="contact.email"/>
+            </p>
+            <div v-if="submited && !$v.contact.email.required">El campo correo es obligatorio</div>
+            <div v-if="submited && !$v.contact.email.minLength">El campo correo debe tener al menos 3 caracteres</div>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <p>
-            Email: <input type="text" name="email" placeholder="Correo" class="form-control"  v-model="contact.email"/>
-          </p>
-          <div v-if="submited && !$v.contact.email.required">El campo correo es obligatorio</div>
-          <div v-if="submited && !$v.contact.email.minLength">El campo correo debe tener al menos 3 caracteres</div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <p>
+              Contraseña: <input type="password" name="password" placeholder="Contraseña" class="form-control"  v-model="contact.password"/>
+            </p>
+            <div v-if="submited && !$v.contact.password.required">El campo contraseña es obligatorio</div>
+            <div v-if="submited && !$v.contact.password.minLength">El campo contraseña debe tener al menos 6 caracteres</div>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <p>
-            Contraseña: <input type="password" name="password" placeholder="Contraseña" class="form-control"  v-model="contact.password"/>
-          </p>
-          <div v-if="submited && !$v.contact.password.required">El campo contraseña es obligatorio</div>
-          <div v-if="submited && !$v.contact.password.minLength">El campo contraseña debe tener al menos 6 caracteres</div>
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <p>
+              Telefono: <input type="text" name="telefono" placeholder="Telefono" class="form-control"  v-model="contact.phone" />
+            </p>
+          </div>
         </div>
 
-        <div class="col-md-4">
-          <p>
-            Telefono: <input type="text" name="telefono" placeholder="Telefono" class="form-control"  v-model="contact.phone" />
-          </p>
-        </div>
-        
-        <div class="col-md-4">
-          <p>
-            Mensaje: <textarea name="mensaje" id="mensaje" cols="30" rows="5" placeholder="Mensaje" class="form-control"  v-model="contact.msj" >
-                      </textarea>
-          </p>
-          <div v-if="submited && !$v.contact.msj.maxLength">El mensaje debe tener al maximo 254 caracteres</div>
+        <div class="row">
+          <div class="col-4"></div>  
+          <div class="col-4">
+            <p>
+              Mensaje: <textarea name="mensaje" id="mensaje" cols="30" rows="2" placeholder="Mensaje" class="form-control"  v-model="contact.msj" >
+                        </textarea>
+            </p>
+            <div v-if="submited && !$v.contact.msj.maxLength">El mensaje debe tener al maximo 254 caracteres</div>
+          </div>
         </div>
 
-        
-        <div class="col-md-4">
-          <hr/>
-          <input type="submit" value="Enviar" title="Enviar" class="btn btn-primary">
+        <div class="row">
+          <div class="col-4"></div> 
+          <div class="col-4">
+            <hr/>
+            <input type="submit" value="Enviar" title="Enviar" class="btn btn-primary">
+          </div>
         </div>
 
-      </form>
-       <FlashMessage></FlashMessage>
+        </form>
+        <FlashMessage></FlashMessage>
+       </body>
 
     </div>
     
@@ -168,8 +192,4 @@ export default {
 
 </script>
 
-<style>
-
-@import '../assets/css/bootstrap.css';
-</style>
 

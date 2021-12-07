@@ -1,10 +1,10 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <span
           class="navbar-brand mb-0 h1">
           <img 
-          class="d-inline-block align-center"
+          class="d-inline-block align-center" 
           src="../assets/images/logo_mb.png" alt="logo_mb"
           width="100" height="50"/>
            
@@ -37,11 +37,14 @@
              </ul>
              
          </div>
-         <div class="navbar-right">
-              <h6 v-if="userLogged"> Hola {{userLogged}} </h6> 
-             <button v-if="userLogged"  v-on:click="logout">Salir</button>
-         </div>  
-             </nav>    
+          <div class="navbar-right">
+              <p class="text-light" v-if="userLogged"> Hola {{userLogged}} </p>
+              <b-button variant="outline-secondary text-light " v-if="userLogged"  v-on:click="logout">Salir</b-button>
+          </div>  
+    </nav>  
+
+    
+
 
     
   </div>

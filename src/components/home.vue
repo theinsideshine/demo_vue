@@ -4,9 +4,10 @@
       <div>
       <router-view></router-view>
       </div>
-    <h2> {{this.appName}} {{this.appVersion}} </h2>   
-    <h6> {{this.appBackEnd}}  </h6>  
-    <h6> {{this.appFrontEnd}}  </h6>  
+      <b-alert class="text-center m0" show> {{this.appName}} {{this.appVersion}} </b-alert>
+      <b-alert class="text-center" variant="success" show>{{this.appBackEnd}} </b-alert>
+      <b-alert class="text-center"  show> {{this.appFrontEnd}} </b-alert>        
+
     
   </div>
 
@@ -41,8 +42,4 @@ export default {
 
   </script>
 
-<style>
-
-@import '../assets/css/bootstrap.css';
-</style>
 

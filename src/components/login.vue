@@ -4,33 +4,47 @@
       <div>
       <router-view></router-view>
       </div>
-      <h2>Formulario de logueo </h2>    
-      <form name="form" id="form" v-on:submit.prevent="process();">
-        <!-- Email input -->
-        <div class="col-md-4">
-                <p>
-                  Email: <input type="text" name="email" placeholder="Email" class="form-control"  v-model="contact.email"/>
-                </p>
-                <div v-if="submited && !$v.contact.email.required">El campo correo es obligatorio</div>
-                <div v-if="submited && !$v.contact.email.minLength">El campo correo debe tener al menos 3 caracteres</div>
-                <div v-if="submited && !$v.contact.email.email">El campo debe tener formato de correo</div>
-              </div>
+        
+      <body  class="text-center">
+      
+        <form class="form-signin" name="form" id="form" v-on:submit.prevent="process();">
+          <img class="mb-4 l" src="../assets/images/logo_mb.png" alt="" width="200" height="100">
+          <h1 class="h3 mb-3 font-weight-normal">Ingrese sus credenciales</h1>         
+          <div class="row"  >
+            <div class="col-5"> </div>
+            <div class="col-2">     
+              <label for="inputEmail" class="sr-only">Email address</label>          
+              <input type="text" name="email" placeholder="Direccion de correo" class="form-control" required autofocus v-model="contact.email"/>
+              
+              <div v-if="submited && !$v.contact.email.required">Es obligatorio</div>
+              <div v-if="submited && !$v.contact.email.minLength">Debe tener al menos 3 caracteres</div>
+              <div v-if="submited && !$v.contact.email.email">Debe tener formato de correo</div>
+            </div>
+          </div>          
 
-        <div class="col-md-4">
-                  <p>
-                    Contraseña: <input type="password" name="contraseña" placeholder="Contraseña" class="form-control"  v-model="contact.password"/>
-                  </p>
-                  <div v-if="submited && !$v.contact.password.required">El campo contraseña es obligatorio</div>
-                  <div v-if="submited && !$v.contact.password.minLength">El campo contraseña debe tener al menos 6 caracteres</div>
-                </div>
-          
-        <div class="col-md-4">
-          <hr/>
-          <input type="submit" value="Enviar" title="Enviar" class="btn btn-primary">
-        </div>  
-      </form>
-      <FlashMessage></FlashMessage>
+          <div class="row"  >
+            <div class="col-5"> </div>
+            <div class="col-2">
+              <label for="inputPassword" class="sr-only">Contraseña</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="Password" required  v-model="contact.password">
+              <div v-if="submited && !$v.contact.password.required">Es obligatorio</div>
+              <div v-if="submited && !$v.contact.password.minLength">Al menos 6 caracteres.</div>
+            </div>
+          </div> 
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Recuerdame
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+          <p class="mt-5 mb-3 text-muted">&copy; MBSOFT-2021</p>
+        </form>
+        <FlashMessage></FlashMessage>
+    </body>
+
+
   </div>
+  
 </template>
 
 <script>
@@ -104,7 +118,10 @@ export default {
 }
 </script>
 
-<style>
+<style >
 
-@import '../assets/css/bootstrap.css';
+body{
+  background-color:#f5f5f5
+}
+  
 </style>

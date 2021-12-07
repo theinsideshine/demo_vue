@@ -60,5 +60,26 @@ Editar usuarios
 ![](images/update_user.gif)
 
 
+Se mejoro en un primera aproximacion la estetica de las pantallas.
+
+Inicio
+![](images/home.gif)
+
+Loggeo
+![](images/login1.gif)
+
+
+Registrar
+![](images/Register.gif)
+
+Usuarios
+![](images/users.gif)
+
+Clima frio
+![](images/weather_cold.gif)
+
+Clima Calido
+![](images/weather_warm.gif)
+
 
 
