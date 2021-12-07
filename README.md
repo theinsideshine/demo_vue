@@ -5,16 +5,7 @@
 npm install -g @vue/cli
 Vue --version 
 
-npm install --save vue-router 
-
-npm install --save axios
-
-
-npm install --save vuelidate
-
-
-npm i @smartweb/vue-flash-message
-
+npm install -
 
 ```
 
@@ -37,8 +28,10 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 
-La intencion de esta app es poder probar un back end escrito en java con toker jwt y Argon2
-para un crud y un acceso a und end point del clima.
+La intencion de este proyecto es poder probar en un servidor la autenticacion con token-jwt y un crud
+ en una base de datos H2 con Argon2 ,ademas un acceso a und end point del clima.
+ 
+ A continuacion se muestran la evolucion del proyecto
 
 Alta de usuario
 ![](images/alta.gif)
