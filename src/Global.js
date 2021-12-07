@@ -12,7 +12,7 @@ export var Global = {
 */
 export var MyApp ={
     name : 'Front-end Demo',
-    version : 'v1.0.05',
+    version : 'v1.0.06',
     backEnd: 'BACK END(Java-Intellij) - base de datos:H2 / password:Argon2 / login:JWT ',
     frontEnd: 'FRONT END(Vue) - loggin / register / crud / end-point: Clima  '
 }
