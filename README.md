@@ -74,6 +74,6 @@ Clima frio
 Clima Calido
 ![](images/weather_warm.gif)
 
-
+video de de Uso:
 [![Video de uso](images/video.gif)](https://youtu.be/GJMszumuEZE)
 
